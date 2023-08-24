@@ -6,6 +6,7 @@ import com.jones.mob_15.data.model.Person
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 
 class HomeViewModel : ViewModel() {
@@ -25,6 +26,22 @@ class HomeViewModel : ViewModel() {
         viewModelScope.launch {
 //            delay(1000)
             finish2.emit("Hello there")
+        }
+    }
+
+//    fun counter() = flow<Int> {
+//        for(i in 1..10) {
+//            emit(i)
+//            delay(1000)
+//        }
+//    }
+
+    fun counter(ss: Int) = flow<Int> {
+        var s = ss
+        while (s >= 0) {
+            emit(s)
+            delay(1000)
+            s--
         }
     }
 
